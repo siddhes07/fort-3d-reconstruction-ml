@@ -1,0 +1,452 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+% Code listing style (used later for Experiments)
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!10},
+    numbers=left,
+    numberstyle=\tiny
+}
+
+\title{Python Programming \\ Assignment 1}
+\author{Siddhesh Jadhav \\ Roll No: MS2510}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{GitHub Repository}
+\href{https://github.com/siddhes07/fort-3d-reconstruction-ml}{GitHub Repository}
+
+\section{Topics}
+
+%============================================
+\subsection{Variables}
+
+\textbf{What is it?} \\
+A variable is a name we give to a piece of data so we can store and refer to it later. In Python, we do not need to declare the type of a variable beforehand -- Python figures out the type automatically based on the value assigned.
+
+\textbf{Why do we need it?} \\
+While a program runs, we often need to hold on to values -- numbers, text, results of calculations -- and reuse them later. Without variables, every value would have to be typed out again and again, which is impractical. Variables let us give data a name and access or update it whenever needed.
+
+\textbf{Where and How is it used?} \\
+Variables are used everywhere data needs to be held temporarily -- in calculations, storing user input, loop counters, or saving the result of a function.
+\begin{lstlisting}
+age = 21
+name = "Siddhesh"
+price = 99.5
+\end{lstlisting}
+Here \texttt{age}, \texttt{name}, and \texttt{price} are variables holding an integer, a string, and a float value respectively.
+
+%============================================
+\subsection{Basic Data Types}
+
+\textbf{What is it?} \\
+A data type is a label that tells Python what kind of value a variable is holding. Python has several built-in data types, four of which are covered below.
+
+\textbf{Why do we need it?} \\
+The data type tells Python which operations are valid on a value (for example, addition works on numbers, concatenation works on strings). Using the wrong type for an operation leads to errors or incorrect results.
+
+\textbf{Where and How is it used?} \\
+Every variable has a type, which Python detects automatically (dynamic typing):
+\begin{lstlisting}
+count = 5           # Integer
+price = 99.5         # Float
+is_active = True     # Boolean
+name = "Siddhesh"    # String
+\end{lstlisting}
+
+\subsubsection*{Integer}
+An integer is a whole number -- positive, negative, or zero -- with no decimal point. It is used for counting, indexing, and loop iterations.
+
+\subsubsection*{Float}
+A float is a number with a decimal point (e.g. 3.14). It is used for measurements, prices, and calculations that need precision.
+
+\subsubsection*{Boolean}
+A boolean can only take two values: \texttt{True} or \texttt{False}. It is used to check conditions in \texttt{if}-\texttt{else} statements and loops.
+
+\subsubsection*{String}
+A string is a sequence of characters (text data), written inside single or double quotes. It is used to represent names, messages, and file contents.
+
+%============================================
+\subsection{Arithmetic Operators}
+
+\textbf{What is it?} \\
+Arithmetic operators are symbols used to perform mathematical calculations -- such as \texttt{+, -, *, /, \%, **, //}.
+
+\textbf{Why do we need it?} \\
+Any numerical calculation, from simple addition to computing averages, needs these operators. Without them a program could not process numbers at all.
+
+\textbf{Where and How is it used?} \\
+They are used everywhere from billing systems to statistics to game scoring:
+\begin{lstlisting}
+a = 10
+b = 3
+print(a + b)   # addition -> 13
+print(a - b)   # subtraction -> 7
+print(a * b)   # multiplication -> 30
+print(a / b)   # division -> 3.333...
+print(a % b)   # modulus (remainder) -> 1
+print(a ** b)  # power -> 1000
+print(a // b)  # floor division -> 3
+\end{lstlisting}
+
+%============================================
+\subsection{Comparison Operators}
+
+\textbf{What is it?} \\
+Comparison operators compare two values and return \texttt{True} or \texttt{False} -- such as \texttt{==, !=, >, <, >=, <=}.
+
+\textbf{Why do we need it?} \\
+Decision making -- in \texttt{if}-\texttt{else} conditions and loop termination -- requires comparing values against each other.
+
+\textbf{Where and How is it used?} \\
+Used inside conditions and loops:
+\begin{lstlisting}
+x = 5
+y = 10
+print(x == y)   # False
+print(x != y)   # True
+print(x < y)    # True
+print(x >= y)   # False
+\end{lstlisting}
+
+%============================================
+\subsection{Assignment Operators}
+
+\textbf{What is it?} \\
+Assignment operators are used to assign values to a variable -- such as \texttt{=, +=, -=, *=, /=}.
+
+\textbf{Why do we need it?} \\
+They give a shorthand way to update the existing value of a variable, making code shorter and more readable.
+
+\textbf{Where and How is it used?} \\
+Used for updating counters and maintaining running totals:
+\begin{lstlisting}
+count = 5
+count += 1   # count = count + 1 -> 6
+count -= 2   # count = count - 2 -> 4
+count *= 3   # count = count * 3 -> 12
+\end{lstlisting}
+
+%============================================
+\subsection{Type Conversion}
+
+\textbf{What is it?} \\
+Type conversion means converting a value from one data type to another (e.g. string to integer).
+
+\textbf{Why do we need it?} \\
+User input often arrives as a string (for example, from \texttt{input()}), but a mathematical operation needs a numeric type. Conversion is required to bridge this gap.
+
+\textbf{Where and How is it used?} \\
+Done using built-in functions: \texttt{int(), float(), str(), bool()}
+\begin{lstlisting}
+age_str = "21"
+age_int = int(age_str)   # string -> integer
+price = str(99.5)        # float -> string
+\end{lstlisting}
+
+%============================================
+\subsection{Input and Output}
+
+\textbf{What is it?} \\
+Input means receiving data from the user, and output means displaying results on the screen. Python provides \texttt{input()} and \texttt{print()} for this.
+
+\textbf{Why do we need it?} \\
+To make a program interactive, it must be able to take data from the user and show results back; otherwise the program would only work on fixed, hardcoded values.
+
+\textbf{Where and How is it used?} \\
+Used in forms, calculators, and virtually all interactive programs:
+\begin{lstlisting}
+name = input("Enter your name: ")  # input from user
+print("Hello", name)               # output display
+\end{lstlisting}
+Note: \texttt{input()} always returns a string, so it must be converted if a different type is needed.
+
+%============================================
+\subsection{Strings}
+
+\textbf{What is it?} \\
+A string is an ordered sequence of characters, written inside quotes (\texttt{"text"} or \texttt{'text'}).
+
+\textbf{Why do we need it?} \\
+Strings are needed to represent text-based data such as names, messages, and file content.
+
+\textbf{Where and How is it used?}
+
+\textit{String Creation:}
+\begin{lstlisting}
+s = "Python Programming"
+\end{lstlisting}
+
+\textit{Indexing:} Each character has a position number starting from 0; negative indexing counts from the end.
+\begin{lstlisting}
+print(s[0])    # 'P'
+print(s[-1])   # 'g'
+\end{lstlisting}
+
+\textit{Slicing:} A portion of a string can be extracted using \texttt{[start:stop:step]}.
+\begin{lstlisting}
+print(s[0:6])   # 'Python'
+print(s[::-1])  # reversed string
+\end{lstlisting}
+
+\textit{String Operations:} Concatenation (\texttt{+}), repetition (\texttt{*}), length (\texttt{len()}), etc.
+\begin{lstlisting}
+greet = "Hello " + "Siddhesh"
+print(greet * 2)
+print(len(greet))
+\end{lstlisting}
+
+%============================================
+\subsection{Lists}
+
+\textbf{What is it?} \\
+A list is a data structure used to store multiple values in order inside a single variable, written using square brackets \texttt{[]}. Lists are mutable, meaning their contents can be changed.
+
+\textbf{Why do we need it?} \\
+Lists are needed to group and manage related data together -- for example, a list of marks or a list of names.
+
+\textbf{Where and How is it used?}
+
+\textit{Creating Lists:}
+\begin{lstlisting}
+fruits = ["Apple", "Banana", "Mango"]
+\end{lstlisting}
+
+\textit{Indexing:}
+\begin{lstlisting}
+print(fruits[0])    # 'Apple'
+print(fruits[-1])   # 'Mango'
+\end{lstlisting}
+
+\textit{Slicing:}
+\begin{lstlisting}
+print(fruits[0:2])  # ['Apple', 'Banana']
+\end{lstlisting}
+
+\textit{Updating Elements:} Since a list is mutable, a value can be changed directly using its index.
+\begin{lstlisting}
+fruits[1] = "Orange"
+\end{lstlisting}
+
+\textit{Nested Lists:} A list can contain another list inside it.
+\begin{lstlisting}
+matrix = [[1, 2], [3, 4]]
+print(matrix[0][1])   # 2
+\end{lstlisting}
+
+\textit{Basic List Methods:}
+\begin{lstlisting}
+numbers = [10, 20, 30]
+numbers.append(40)    # add to end -> [10,20,30,40]
+numbers.insert(1, 15) # add at a specific position
+numbers.remove(20)    # delete a value
+numbers.pop()         # remove last element
+numbers.sort()        # ascending order
+numbers.reverse()     # reverse the order
+len(numbers)           # total number of elements
+\end{lstlisting}
+
+\section{Mini Experiments}
+
+%============================================
+\subsection*{Experiment 1: Swapping Two Variables}
+\begin{lstlisting}
+a = 10
+b = 20
+a, b = b, a
+print(a)
+print(b)
+\end{lstlisting}
+\textbf{Explanation:} Python allows swapping two variables in a single line using tuple unpacking: \texttt{a, b = b, a}. The right-hand side is evaluated first, then assigned to the left, so \texttt{a} becomes 20 and \texttt{b} becomes 10. No temporary variable is needed.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{../screenshots/exp1.png}
+\caption{Experiment 1 output}
+\end{figure}
+
+%============================================
+\subsection*{Experiment 2: String Indexing and Slicing}
+\begin{lstlisting}
+text = "Python Programming"
+print(text[0])
+print(text[-1])
+print(text[0:6])
+print(text[::-1])
+\end{lstlisting}
+\textbf{Explanation:} \texttt{text[0]} gives the first character, \texttt{text[-1]} gives the last character (negative indexing), \texttt{text[0:6]} slices the first 6 characters, and \texttt{text[::-1]} reverses the whole string using a step of -1.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{../screenshots/exp2.png}
+\caption{Experiment 2 output}
+\end{figure}
+
+%============================================
+\subsection*{Experiment 3: List append() and remove()}
+\begin{lstlisting}
+numbers = [10, 20, 30]
+numbers.append(40)
+numbers.remove(20)
+print(numbers)
+\end{lstlisting}
+\textbf{Explanation:} \texttt{append(40)} adds 40 at the end of the list. \texttt{remove(20)} deletes the first occurrence of value 20. Final list: \texttt{[10, 30, 40]}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{../screenshots/exp3.png}
+\caption{Experiment 3 output}
+\end{figure}
+
+%============================================
+\subsection*{Experiment 4: More String Slicing}
+\begin{lstlisting}
+text = "Programming"
+print(text[0:5])
+print(text[3:])
+print(text[:6])
+print(text[::-1])
+\end{lstlisting}
+\textbf{Explanation:} Slicing extracts a portion of the string based on start and stop indices; when either is omitted, it defaults to the start or end of the string. The last line reverses the string.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{../screenshots/exp4.png}
+\caption{Experiment 4 output}
+\end{figure}
+
+%============================================
+\subsection*{Experiment 5: Why input() Output Differs Before and After Conversion}
+\begin{lstlisting}
+age = input("Enter your age: ")
+print(age + age)
+age = int(age)
+print(age + age)
+# Why are the two outputs different?
+\end{lstlisting}
+\textbf{Explanation:} \texttt{input()} always returns a string. So the first \texttt{age + age} performs string concatenation (e.g. \texttt{"21" + "21"} gives \texttt{"2121"}). After converting with \texttt{int(age)}, the second \texttt{age + age} performs actual addition (e.g. \texttt{21 + 21 = 42}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{../screenshots/exp5.png}
+\caption{Experiment 5 output}
+\end{figure}
+
+%============================================
+\subsection*{Experiment 6: List Indexing and Slicing}
+\begin{lstlisting}
+fruits = ["Apple", "Banana", "Mango", "Orange"]
+print(fruits[0])
+print(fruits[-1])
+print(fruits[1:3])
+\end{lstlisting}
+\textbf{Explanation:} \texttt{fruits[0]} gives the first element, \texttt{fruits[-1]} gives the last element, and \texttt{fruits[1:3]} gives elements at index 1 and 2.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{../screenshots/exp6.png}
+\caption{Experiment 6 output}
+\end{figure}
+
+%============================================
+\subsection*{Experiment 7: Updating a List Element}
+\begin{lstlisting}
+numbers = [10, 20, 30]
+numbers[1] = 200
+print(numbers)
+# Why can a list be modified while a string cannot?
+\end{lstlisting}
+\textbf{Explanation:} Lists are \textbf{mutable}, so an element can be changed directly using its index. Strings are \textbf{immutable} -- their characters cannot be changed in place; any "modification" actually creates a new string object.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{../screenshots/exp7.png}
+\caption{Experiment 7 output}
+\end{figure}
+
+%============================================
+\subsection*{Experiment 8: Print Patterns}
+\begin{lstlisting}
+print("=" * 40)
+print("WELCOME")
+print("=" * 40)
+print()
+print("*" * 20)
+print("Python")
+print("*" * 20)
+\end{lstlisting}
+\textbf{Explanation:} The \texttt{*} operator repeats a string a given number of times, used here to build banner-style borders around text.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{../screenshots/exp8.png}
+\caption{Experiment 8 output}
+\end{figure}
+
+%============================================
+\subsection*{Experiment 8 (contd.): Reverse a Name Taken as Input}
+\begin{lstlisting}
+name = input("Enter your name: ")
+reversed_name = name[::-1]
+print("Reversed name:", reversed_name)
+\end{lstlisting}
+\textbf{Explanation:} \texttt{input()} takes the name as a string, and slicing with \texttt{[::-1]} reverses it by stepping backwards through the characters.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{../screenshots/exp8b.png}
+\caption{Experiment 8 (contd.) output}
+\end{figure}
+
+%============================================
+\subsection*{Experiment 9: Student Card Program}
+\begin{lstlisting}
+name = input("Enter Name: ")
+age = input("Enter Age: ")
+roll_no = input("Enter Roll Number: ")
+course = input("Enter Course: ")
+
+print("=" * 28)
+print("STUDENT CARD")
+print("=" * 28)
+print("Name    :", name)
+print("Age     :", age)
+print("Roll No.:", roll_no)
+print("Course  :", course)
+print("=" * 28)
+print()
+print(f"Hello {name}!")
+print("Welcome to the world of Python.")
+print("\"Python is easy to learn!\"")
+print("'I'll practice every day.'")
+print("\"Practice makes perfect.\"")
+print("\\/" * 12)
+print("Happy Coding!")
+\end{lstlisting}
+\textbf{Explanation:} This program collects the student's details using \texttt{input()} and displays them in a formatted card using \texttt{print()}. Escape characters (\texttt{\textbackslash"}, \texttt{\textbackslash'}, \texttt{\textbackslash\textbackslash}) are used to print quotes and backslashes literally inside strings.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{../screenshots/exp9.png}
+\caption{Experiment 9 output}
+\end{figure}
+
+\end{document}
