@@ -1,8 +1,10 @@
+from pathlib import Path
+
 import gradio as gr
 from PIL import ImageOps
 from ultralytics import YOLO
 
-model = YOLO("gateway_best.pt")
+model = YOLO(Path(__file__).resolve().parents[1] / "models" / "yolo" / "gateway_best.pt")
 
 def detect(img):
     if img is None:
