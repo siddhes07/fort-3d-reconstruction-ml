@@ -8,7 +8,7 @@ model = YOLO(Path(__file__).resolve().parents[1] / "models" / "yolo" / "gateway_
 
 def detect(img):
     if img is None:
-        return None, "Please upload a photo."
+        return None, "Please First upload a photo."
     img = ImageOps.exif_transpose(img).convert("RGB")
     r = model.predict(img, conf=0.25, verbose=False)[0]
     text = "Sorry...!No gateway detected. Please Upload another Photo" if len(r.boxes) == 0 else "\n".join(
